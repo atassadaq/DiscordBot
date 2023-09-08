@@ -1,5 +1,7 @@
 import discord
 import responses
+import os
+from dotenv import load_dotenv
 
 async def sendMessage(message,user_message,isPrivate):
     try:
@@ -10,7 +12,8 @@ async def sendMessage(message,user_message,isPrivate):
 
 
 def runDiscordBot():
-    TOKEN = 'MTE0OTc0OTg3NTYyMjI5MzUzNQ.GLhwyy.s8cgayzuCA-LNh4s6z2g-kLNgVvYKTOOuUXemw'
+    load_dotenv()
+    TOKEN = os.getenv('DISCORD_TOKEN')
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
